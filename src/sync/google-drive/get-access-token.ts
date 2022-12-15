@@ -2,7 +2,7 @@
 export type AccessToken = string;
 
 const CLIENT_ID =
-  '662998053209-s49tq55ic3td87m08gi8vpjqm5t7r9st.apps.googleusercontent.com';
+  '695847899670-po8aovfc20o6755madfuflttkuevq6q9.apps.googleusercontent.com';
 
 const extractAccessToken = (redirectUri: string) => {
   const m = redirectUri.match(/[#?](.*)/);
@@ -66,7 +66,7 @@ const validate = async (redirectURL?: string): Promise<AccessToken> => {
 const authorize = (): Promise<string | undefined> => {
   return new Promise(resolve => {
     const redirectURL = chrome.identity.getRedirectURL();
-    const scopes = ['https://www.googleapis.com/auth/drive.file'];
+    const scopes = ['https://www.googleapis.com/auth/drive'];
 
     let authURL = 'https://accounts.google.com/o/oauth2/auth';
     authURL += `?client_id=${CLIENT_ID}`;
