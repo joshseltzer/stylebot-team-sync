@@ -121,20 +121,22 @@ const patchBackup = async (
 export const getSyncFileMetadata = async (
   accessToken: AccessToken
 ): Promise<GoogleDriveSyncMetadata | null> => {
-  const query = `name = '${SYNC_FILE_NAME}'`;
-  const url = `${GOOGLE_DRIVE_FILE_GET_API}?q=${encodeURIComponent(query)}`;
+  // const query = `name = '${SYNC_FILE_NAME}'`;
+  // const url = `${GOOGLE_DRIVE_FILE_GET_API}?q=${encodeURIComponent(query)}`;
 
-  const response = await fetch(url, {
-    method: 'GET',
-    headers: getAuthorizationHeaders(accessToken),
-  });
+  // const response = await fetch(url, {
+  //   method: 'GET',
+  //   headers: getAuthorizationHeaders(accessToken),
+  // });
 
-  const { files } = await response.json();
-  if (!files || files.length === 0) {
-    return null;
-  }
+  // const { files } = await response.json();
+  // if (!files || files.length === 0) {
+  //   return null;
+  // }
 
-  const syncMetadata = await getFileMetadata(files[0].id, accessToken);
+  const syncFileId = '1v5-IAbNIsdyqjHfMvdw3IUNIRll_1DR7';
+
+  const syncMetadata = await getFileMetadata(syncFileId, accessToken);
   if (!syncMetadata) {
     return null;
   }
